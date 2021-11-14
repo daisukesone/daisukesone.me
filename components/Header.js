@@ -68,13 +68,20 @@ const Header = ({ navBarTitle, fullWidth }) => {
       >
         <div className='flex items-center'>
           <Link href='/'>
-            <a aria-label={BLOG.title}>
+            <a aria-label={BLOG.title}></a>
             <div className='h-6'>
-              <Image src={`https://www.notion.so/daisukesone/10-2021-11-07-2021-11-13-606b4a2c1b0341a49265172c89246f60#a898f85b635a4345a9bc1e22fe9ae3d6`} width={24} height={24} alt='daisukesone' />
+              <Image
+                src={`https://www.notion.so/daisukesone/10-2021-11-07-2021-11-13-606b4a2c1b0341a49265172c89246f60#a898f85b635a4345a9bc1e22fe9ae3d6`}
+                width={24}
+                height={24}
+                alt='daisukesone'
+              />
             </div>
           </Link>
           {navBarTitle ? (
-            <p className='ml-2 font-medium text-day dark:text-night header-name'>{navBarTitle}</p>
+            <p className='ml-2 font-medium text-day dark:text-night header-name'>
+              {navBarTitle}
+            </p>
           ) : (
             <p className='ml-2 font-medium text-day dark:text-night header-name'>
               {BLOG.title},{' '}
