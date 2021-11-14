@@ -71,10 +71,10 @@ const Header = ({ navBarTitle, fullWidth }) => {
             <a aria-label={BLOG.title}>
               <div className="h-6">
                 <Image
-                  alt={BLOG.author}
+                  alt="daisukesone"
                   width={24}
                   height={24}
-                  src={`https://gravatar.com/avatar/${emailHash}`}
+                  src={`https://www.notion.so/daisukesone/10-2021-11-07-2021-11-13-606b4a2c1b0341a49265172c89246f60#a898f85b635a4345a9bc1e22fe9ae3d6`}
                   className="rounded-full"
                 />
               </div>
