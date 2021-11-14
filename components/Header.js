@@ -72,7 +72,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
             <a aria-label={BLOG.title}>
               <div className='h-6'>
                 <Image
-                  src={`https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8a05b174-ce56-4133-a706-a62d32d69298/electric-light-bulb_1f4a1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20211114%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20211114T140357Z&X-Amz-Expires=86400&X-Amz-Signature=57a0415c1d4b22eba4bdb372e578e1a0cdce8c61e1cd2f4eb3b42cb0b6dbbd07&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22electric-light-bulb_1f4a1.png%22`}
+                  src='/public/top.png'
                   width={24}
                   height={24}
                   alt='daisukesone'
