@@ -3,7 +3,7 @@ const BLOG = {
   author: "daisukesone",
   email: "sonedai0213@gmail.com",
   link: "https://www.daisukesone.me/",
-  description: "It's a piece of cake.",
+  description: "",
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: "auto", // ['light', 'dark', 'auto'],
   font: "sans-serif", // ['sans-serif', 'serif']
