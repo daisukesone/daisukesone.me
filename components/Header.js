@@ -72,7 +72,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
             <a aria-label={BLOG.title}>
               <div className='h-6'>
                 <Image
-                  src='/public/top.png'
+                  src='/top.png'
                   width={24}
                   height={24}
                   alt='daisukesone'
