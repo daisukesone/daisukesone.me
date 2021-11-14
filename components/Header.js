@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import BLOG from '@/blog.config'
+import { useLocale } from '@/lib/locale'
 
 const NavBar = () => {
   const locale = useLocale()
@@ -68,15 +69,16 @@ const Header = ({ navBarTitle, fullWidth }) => {
       >
         <div className='flex items-center'>
           <Link href='/'>
-            <a aria-label={BLOG.title}></a>
-            <div className='h-6'>
-              <Image
-                src={`https://www.notion.so/daisukesone/10-2021-11-07-2021-11-13-606b4a2c1b0341a49265172c89246f60#a898f85b635a4345a9bc1e22fe9ae3d6`}
-                width={24}
-                height={24}
-                alt='daisukesone'
-              />
-            </div>
+            <a aria-label={BLOG.title}>
+              <div className='h-6'>
+                <Image
+                  src={`https://www.notion.so/daisukesone/10-2021-11-07-2021-11-13-606b4a2c1b0341a49265172c89246f60#a898f85b635a4345a9bc1e22fe9ae3d6`}
+                  width={24}
+                  height={24}
+                  alt='daisukesone'
+                />
+              </div>
+            </a>
           </Link>
           {navBarTitle ? (
             <p className='ml-2 font-medium text-day dark:text-night header-name'>
