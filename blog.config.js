@@ -15,6 +15,8 @@ const BLOG = {
   sortByDate: true,
   showAbout: true,
   showArchive: true,
+  showGallery: true,
+  galleryPageId: process.env.NOTION_GALLERY_PAGE_ID,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: "https://og-image-craigary.vercel.app", // The link to generate OG image, don't end with a slash
   socialLink: "https://twitter.com/daisukesone213",

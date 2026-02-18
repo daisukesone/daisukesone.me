@@ -1,7 +1,13 @@
 module.exports = {
   webpack5: true,
   images: {
-    domains: ['gravatar.com']
+    domains: [
+      'gravatar.com',
+      'www.notion.so',
+      's3.us-west-2.amazonaws.com',
+      's3-us-west-2.amazonaws.com',
+      'images.unsplash.com'
+    ]
   },
   eslint: {
     dirs: [
