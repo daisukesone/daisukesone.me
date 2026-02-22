@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import BLOG from '@/blog.config'
 import { useLocale } from '@/lib/locale'
+import DarkModeToggle from '@/components/DarkModeToggle'
 
 const NavBar = () => {
   const locale = useLocale()
@@ -93,7 +94,10 @@ const Header = ({ navBarTitle, fullWidth }) => {
             </p>
               )}
         </div>
-        <NavBar />
+        <div className='flex items-center'>
+          <NavBar />
+          <DarkModeToggle />
+        </div>
       </div>
     </>
   )
