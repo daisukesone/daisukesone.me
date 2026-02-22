@@ -7,6 +7,7 @@ import formatDate from '@/lib/formatDate'
 import { useLocale } from '@/lib/locale'
 import { useRouter } from 'next/router'
 import Comments from '@/components/Comments'
+import TableOfContents from '@/components/TableOfContents'
 
 const mapPageUrl = id => {
   return 'https://www.notion.so/' + id.replace(/-/g, '')
@@ -65,6 +66,7 @@ const Layout = ({
           </nav>
         )}
         {children}
+        <TableOfContents blockMap={blockMap} />
         {blockMap && (
           <div className="-mt-4">
             <NotionRenderer
