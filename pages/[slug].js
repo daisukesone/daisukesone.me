@@ -3,7 +3,7 @@ import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
 import { createHash } from 'crypto'
 
-const BlogPost = ({ post, blockMap, emailHash }) => {
+const BlogPost = ({ post, blockMap, emailHash, relatedPosts }) => {
   if (!post) return null
   return (
     <Layout
@@ -11,6 +11,7 @@ const BlogPost = ({ post, blockMap, emailHash }) => {
       frontMatter={post}
       emailHash={emailHash}
       fullWidth={post.fullWidth}
+      relatedPosts={relatedPosts}
     />
   )
 }
@@ -27,6 +28,12 @@ export async function getStaticProps ({ params: { slug } }) {
   const posts = await getAllPosts({ includePages: true })
   const post = posts.find(t => t.slug === slug)
   const blockMap = await getPostBlocks(post.id)
+  const currentTags = post.tags || []
+  const relatedPosts = currentTags.length > 0
+    ? posts
+        .filter(p => p.slug !== slug && p.type && p.type[0] !== 'Page' && (p.tags || []).some(t => currentTags.includes(t)))
+        .slice(0, 3)
+    : []
   const emailHash = createHash('md5')
     .update(BLOG.email)
     .digest('hex')
@@ -34,7 +41,7 @@ export async function getStaticProps ({ params: { slug } }) {
     .toLowerCase()
 
   return {
-    props: { post, blockMap, emailHash },
+    props: { post, blockMap, emailHash, relatedPosts },
     revalidate: 1
   }
 }
