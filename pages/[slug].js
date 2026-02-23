@@ -1,9 +1,10 @@
 import Layout from '@/layouts/layout'
 import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
+import { getReadingTime } from '@/lib/readingTime'
 import { createHash } from 'crypto'
 
-const BlogPost = ({ post, blockMap, emailHash }) => {
+const BlogPost = ({ post, blockMap, emailHash, readingTime }) => {
   if (!post) return null
   return (
     <Layout
@@ -11,6 +12,7 @@ const BlogPost = ({ post, blockMap, emailHash }) => {
       frontMatter={post}
       emailHash={emailHash}
       fullWidth={post.fullWidth}
+      readingTime={readingTime}
     />
   )
 }
@@ -27,6 +29,7 @@ export async function getStaticProps ({ params: { slug } }) {
   const posts = await getAllPosts({ includePages: true })
   const post = posts.find(t => t.slug === slug)
   const blockMap = await getPostBlocks(post.id)
+  const readingTime = getReadingTime(blockMap)
   const emailHash = createHash('md5')
     .update(BLOG.email)
     .digest('hex')
@@ -34,7 +37,7 @@ export async function getStaticProps ({ params: { slug } }) {
     .toLowerCase()
 
   return {
-    props: { post, blockMap, emailHash },
+    props: { post, blockMap, emailHash, readingTime },
     revalidate: 1
   }
 }
