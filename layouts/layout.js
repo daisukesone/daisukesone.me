@@ -7,6 +7,7 @@ import formatDate from '@/lib/formatDate'
 import { useLocale } from '@/lib/locale'
 import { useRouter } from 'next/router'
 import Comments from '@/components/Comments'
+import Link from 'next/link'
 
 const mapPageUrl = id => {
   return 'https://www.notion.so/' + id.replace(/-/g, '')
@@ -17,7 +18,9 @@ const Layout = ({
   blockMap,
   frontMatter,
   emailHash,
-  fullWidth = false
+  fullWidth = false,
+  prevPost,
+  nextPost
 }) => {
   const locale = useLocale()
   const router = useRouter()
@@ -98,6 +101,30 @@ const Layout = ({
           </button>
         </a>
       </div>
+      {(prevPost || nextPost) && (
+        <div className="flex justify-between mt-6 text-gray-500 dark:text-gray-400">
+          <div className="text-left max-w-[45%]">
+            {prevPost && (
+              <Link href={`${BLOG.path}/${prevPost.slug}`}>
+                <a className="hover:text-black dark:hover:text-gray-100 transition-colors">
+                  <span className="text-sm">← Previous</span>
+                  <p className="font-medium mt-1 truncate">{prevPost.title}</p>
+                </a>
+              </Link>
+            )}
+          </div>
+          <div className="text-right max-w-[45%]">
+            {nextPost && (
+              <Link href={`${BLOG.path}/${nextPost.slug}`}>
+                <a className="hover:text-black dark:hover:text-gray-100 transition-colors">
+                  <span className="text-sm">Next →</span>
+                  <p className="font-medium mt-1 truncate">{nextPost.title}</p>
+                </a>
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
       <Comments frontMatter={frontMatter} />
     </Container>
   )
