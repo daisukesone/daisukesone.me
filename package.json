@@ -49,6 +49,9 @@
   "resolutions": {
     "axios": ">=0.21.1"
   },
+  "engines": {
+    "node": ">=20.x"
+  },
   "bugs": {
     "url": "https://github.com/craigary/nobelium/issues",
     "email": "i@craigary.net"
