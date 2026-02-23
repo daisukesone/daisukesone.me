@@ -3,6 +3,7 @@ import Footer from '@/components/Footer'
 import BLOG from '@/blog.config'
 import Head from 'next/head'
 import PropTypes from 'prop-types'
+import ScrollToTop from '@/components/ScrollToTop'
 // import BlogPost from './BlogPost'
 
 const Container = ({ children, layout, fullWidth, ...customMeta }) => {
@@ -80,6 +81,7 @@ const Container = ({ children, layout, fullWidth, ...customMeta }) => {
         </main>
         <Footer fullWidth={fullWidth} />
       </div>
+      <ScrollToTop />
     </div>
   )
 }
