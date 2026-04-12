@@ -18,7 +18,7 @@ const BlogPost = ({ post, blockMap, emailHash }) => {
 export async function getStaticPaths () {
   const posts = await getAllPosts({ includePages: true })
   return {
-    paths: posts.map(row => `${BLOG.path}/${row.slug}`),
+    paths: (posts || []).map(row => `${BLOG.path}/${row.slug}`),
     fallback: true
   }
 }
