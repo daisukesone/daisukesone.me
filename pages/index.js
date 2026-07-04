@@ -1,5 +1,6 @@
 import Container from '@/components/Container'
 import BlogPost from '@/components/BlogPost'
+import Hero from '@/components/Hero'
 import Pagination from '@/components/Pagination'
 import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
@@ -22,8 +23,13 @@ export async function getStaticProps () {
 const blog = ({ postsToShow, page, showNext }) => {
   return (
     <Container title={BLOG.title} description={BLOG.description}>
-      {postsToShow.map(post => (
-        <BlogPost key={post.id} post={post} />
+      <Hero />
+      <div className="flex items-center mb-6 fade-up fade-up-4">
+        <span className="section-label">Latest Posts</span>
+        <span className="flex-grow ml-4 h-px bg-gray-200 dark:bg-gray-800"></span>
+      </div>
+      {postsToShow.map((post, index) => (
+        <BlogPost key={post.id} post={post} index={index} />
       ))}
       {showNext && <Pagination page={page} showNext={showNext} />}
     </Container>
