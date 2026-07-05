@@ -1,5 +1,6 @@
 const BLOG = require('./blog.config')
 const { fontFamily } = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 const CJK = require('./lib/cjk')
 const fontSansCJK = !CJK()
   ? []
@@ -20,7 +21,10 @@ module.exports = {
         },
         night: {
           DEFAULT: BLOG.darkBackground || '#111827'
-        }
+        },
+        orange: colors.orange,
+        amber: colors.amber,
+        rose: colors.rose
       },
       fontFamily: {
         sans: ['"IBM Plex Sans"', ...fontFamily.sans, ...fontSansCJK],

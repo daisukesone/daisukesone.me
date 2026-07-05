@@ -5,22 +5,19 @@ const Tags = ({ tags, currentTag }) => {
   return (
     <div className="tag-container">
       <ul className="flex max-w-full mt-4 overflow-x-auto">
-        {Object.keys(tags).map(key => {
+        {Object.keys(tags).map((key) => {
           const selected = key === currentTag
           return (
-            <li
-              key={key}
-              className={`mr-3 font-medium border whitespace-nowrap dark:text-gray-300 ${
-                selected
-                  ? 'text-white bg-black border-black dark:bg-gray-600 dark:border-gray-600'
-                  : 'bg-gray-100 border-gray-100 text-gray-400 dark:bg-night dark:border-gray-800'
-              }`}
-            >
+            <li key={key} className="mr-2 whitespace-nowrap">
               <Link
                 key={key}
                 href={selected ? '/search' : `/tag/${encodeURIComponent(key)}`}
               >
-                <a className="px-4 py-2 block">
+                <a
+                  className={`tag-pill block ${
+                    selected ? 'tag-pill-active' : ''
+                  }`}
+                >
                   {`${key} (${tags[key]})`}
                 </a>
               </Link>
