@@ -7,13 +7,14 @@ const BLOG = {
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
   appearance: "light", // ['light', 'dark', 'auto'], users can still toggle themes from the nav bar
   font: "sans-serif", // ['sans-serif', 'serif']
-  lightBackground: "#fafafa", // use hex value, don't forget '#' e.g #fffefc
-  darkBackground: "#0a0a0c", // use hex value, don't forget '#'
+  lightBackground: "#faf8f5", // use hex value, don't forget '#' e.g #fffefc
+  darkBackground: "#0e0b09", // use hex value, don't forget '#'
   path: "", // leave this empty unless you want to deploy Nobelium in a folder
   since: 2021, // If leave this empty, current year will be used.
   postsPerPage: 11,
   sortByDate: true,
   showAbout: true,
+  showPhotos: true, // show the /photos gallery page (posts with type 'Photo' in Notion)
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: "https://og-image-craigary.vercel.app", // The link to generate OG image, don't end with a slash

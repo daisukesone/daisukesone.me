@@ -29,7 +29,7 @@ const BlogPost = ({ post, index = 0 }) => {
               </svg>
             </span>
           </header>
-          <h2 className="text-lg md:text-xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-gray-100 transition-colors group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-500 group-hover:to-blue-400">
+          <h2 className="text-lg md:text-xl font-semibold tracking-tight mb-2 text-gray-900 dark:text-gray-100 transition-colors group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-orange-500 group-hover:to-rose-500">
             {post.title}
           </h2>
           {post.summary && (
