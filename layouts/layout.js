@@ -1,12 +1,23 @@
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import Container from '@/components/Container'
 import TagItem from '@/components/TagItem'
-import { NotionRenderer, Equation, Code, Collection, CollectionRow } from 'react-notion-x'
+import { NotionRenderer } from 'react-notion-x'
 import BLOG from '@/blog.config'
 import formatDate from '@/lib/formatDate'
 import { useLocale } from '@/lib/locale'
 import { useRouter } from 'next/router'
 import Comments from '@/components/Comments'
+
+const Code = dynamic(() =>
+  import('react-notion-x/build/third-party/code').then(m => m.Code)
+)
+const Collection = dynamic(() =>
+  import('react-notion-x/build/third-party/collection').then(m => m.Collection)
+)
+const Equation = dynamic(() =>
+  import('react-notion-x/build/third-party/equation').then(m => m.Equation)
+)
 
 const mapPageUrl = id => {
   return 'https://www.notion.so/' + id.replace(/-/g, '')
@@ -70,10 +81,9 @@ const Layout = ({
             <NotionRenderer
               recordMap={blockMap}
               components={{
-                equation: Equation,
-                code: Code,
-                collection: Collection,
-                collectionRow: CollectionRow
+                Code,
+                Collection,
+                Equation
               }}
               mapPageUrl={mapPageUrl}
             />
