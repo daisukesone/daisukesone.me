@@ -8,7 +8,6 @@ import dynamic from 'next/dynamic'
 import { LocaleProvider } from '@/lib/locale'
 import Scripts from '@/components/Scripts'
 
-const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
 
 function MyApp ({ Component, pageProps }) {
@@ -17,12 +16,6 @@ function MyApp ({ Component, pageProps }) {
       <Scripts />
       <LocaleProvider>
         <>
-          {BLOG.isProd && BLOG?.analytics?.provider === 'ackee' && (
-            <Ackee
-              ackeeServerUrl={BLOG.analytics.ackeeConfig.dataAckeeServer}
-              ackeeDomainId={BLOG.analytics.ackeeConfig.domainId}
-            />
-          )}
           {BLOG.isProd && BLOG?.analytics?.provider === 'ga' && <Gtag />}
           <Component {...pageProps} />
         </>
