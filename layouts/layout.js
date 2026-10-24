@@ -7,6 +7,7 @@ import formatDate from '@/lib/formatDate'
 import { useLocale } from '@/lib/locale'
 import { useRouter } from 'next/router'
 import Comments from '@/components/Comments'
+import mapImageUrl from '@/lib/mapImageUrl'
 
 const mapPageUrl = id => {
   return 'https://www.notion.so/' + id.replace(/-/g, '')
@@ -76,6 +77,7 @@ const Layout = ({
                 collectionRow: CollectionRow
               }}
               mapPageUrl={mapPageUrl}
+              mapImageUrl={mapImageUrl}
             />
           </div>
         )}
