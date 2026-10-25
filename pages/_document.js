@@ -101,6 +101,11 @@ class MyDocument extends Document {
           }
         </Head>
         <body className="bg-day dark:bg-night">
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(){try{var s=localStorage.getItem('theme');var old=localStorage.getItem('darkMode');var d=s?s==='dark':old!==null?old==='true':${BLOG.appearance === 'auto' ? "window.matchMedia('(prefers-color-scheme: dark)').matches" : JSON.stringify(BLOG.appearance === 'dark')};document.documentElement.classList.toggle('dark',d)}catch(e){}})()`
+            }}
+          />
           <Main />
           <NextScript />
         </body>

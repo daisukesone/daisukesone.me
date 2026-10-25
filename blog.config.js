@@ -3,17 +3,18 @@ const BLOG = {
   author: "daisukesone",
   email: "sonedai0213@gmail.com",
   link: "https://www.daisukesone.me/",
-  description: "",
-  lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
-  appearance: "light", // ['light', 'dark', 'auto'],
+  description: "daisukesone's personal blog",
+  lang: "ja-JP", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES']
+  appearance: "auto", // ['light', 'dark', 'auto'],
   font: "sans-serif", // ['sans-serif', 'serif']
-  lightBackground: "#ffffff", // use hex value, don't forget '#' e.g #fffefc
-  darkBackground: "#18181B", // use hex value, don't forget '#'
+  lightBackground: "#faf8f5", // use hex value, don't forget '#' e.g #fffefc
+  darkBackground: "#0e0b09", // use hex value, don't forget '#'
   path: "", // leave this empty unless you want to deploy Nobelium in a folder
   since: 2021, // If leave this empty, current year will be used.
   postsPerPage: 11,
   sortByDate: true,
   showAbout: true,
+  showPhotos: true, // show the /photos gallery page (posts with type 'Photo' in Notion)
   showArchive: true,
   autoCollapsedNavBar: false, // The automatically collapsed navigation bar
   ogImageGenerateURL: "https://og-image-craigary.vercel.app", // The link to generate OG image, don't end with a slash
@@ -36,23 +37,10 @@ const BLOG = {
     },
   },
   comment: {
-    // support provider: gitalk, utterances, cusdis
+    // support provider: utterances
     provider: "", // leave it empty if you don't need any comment plugin
-    gitalkConfig: {
-      repo: "", // The repository of store comments
-      owner: "",
-      admin: [],
-      clientID: "",
-      clientSecret: "",
-      distractionFreeMode: false,
-    },
     utterancesConfig: {
       repo: "",
-    },
-    cusdisConfig: {
-      appId: "", // data-app-id
-      host: "https://cusdis.com", // data-host, change this if you're using self-hosted version
-      scriptSrc: "https://cusdis.com/js/cusdis.es.js", // change this if you're using self-hosted version
     },
   },
   isProd: process.env.VERCEL_ENV === "production", // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)

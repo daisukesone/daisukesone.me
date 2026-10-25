@@ -7,24 +7,39 @@ import BLOG from '@/blog.config'
 import dynamic from 'next/dynamic'
 import { LocaleProvider } from '@/lib/locale'
 import Scripts from '@/components/Scripts'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
-const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
 
 function MyApp ({ Component, pageProps }) {
+  const router = useRouter()
+  const [fadeIn, setFadeIn] = useState(true)
+
+  useEffect(() => {
+    const handleStart = () => setFadeIn(false)
+    const handleComplete = () => setFadeIn(true)
+
+    setFadeIn(true)
+    router.events.on('routeChangeStart', handleStart)
+    router.events.on('routeChangeComplete', handleComplete)
+    router.events.on('routeChangeError', handleComplete)
+    return () => {
+      router.events.off('routeChangeStart', handleStart)
+      router.events.off('routeChangeComplete', handleComplete)
+      router.events.off('routeChangeError', handleComplete)
+    }
+  }, [router])
+
   return (
     <>
       <Scripts />
       <LocaleProvider>
         <>
-          {BLOG.isProd && BLOG?.analytics?.provider === 'ackee' && (
-            <Ackee
-              ackeeServerUrl={BLOG.analytics.ackeeConfig.dataAckeeServer}
-              ackeeDomainId={BLOG.analytics.ackeeConfig.domainId}
-            />
-          )}
           {BLOG.isProd && BLOG?.analytics?.provider === 'ga' && <Gtag />}
-          <Component {...pageProps} />
+          <div className={`page-transition ${fadeIn ? 'page-visible' : 'page-hidden'}`}>
+            <Component {...pageProps} />
+          </div>
         </>
       </LocaleProvider>
     </>

@@ -17,17 +17,17 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
 
   return (
     <Container>
-      <div className="relative">
+      <div className="relative fade-up fade-up-1">
         <input
           type="text"
           placeholder={
-            currentTag ? `Search in #${currentTag}` : 'Search Articles'
+            currentTag ? `Search in #${currentTag}` : 'Search articles…'
           }
-          className="block w-full border px-4 py-2 border-black bg-white text-black dark:bg-night dark:border-white dark:text-white"
+          className="search-input"
           onChange={e => setSearchValue(e.target.value)}
         />
         <svg
-          className="absolute right-3 top-3 h-5 w-5 text-black dark:text-white"
+          className="absolute left-4 top-1/2 -mt-2.5 h-5 w-5 text-gray-400 dark:text-gray-500"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -41,16 +41,17 @@ const SearchLayout = ({ tags, posts, currentTag }) => {
           ></path>
         </svg>
       </div>
-      <Tags
-        tags={tags}
-        currentTag={currentTag}
-      />
+      <div className="fade-up fade-up-2">
+        <Tags tags={tags} currentTag={currentTag} />
+      </div>
       <div className="article-container my-8">
         {!filteredBlogPosts.length && (
-          <p className="text-gray-500 dark:text-gray-300">No posts found.</p>
+          <p className="text-gray-500 dark:text-gray-400 fade-up fade-up-3">
+            No posts found.
+          </p>
         )}
-        {filteredBlogPosts.slice(0, 20).map(post => (
-          <BlogPost key={post.id} post={post} />
+        {filteredBlogPosts.slice(0, 20).map((post, index) => (
+          <BlogPost key={post.id} post={post} index={index} />
         ))}
       </div>
     </Container>
