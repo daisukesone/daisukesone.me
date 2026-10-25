@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import Comments from '@/components/Comments'
 import mapImageUrl from '@/lib/mapImageUrl'
 import Link from 'next/link'
+import CodeCopyButton from '@/components/CodeCopyButton'
 
 const mapPageUrl = id => {
   return 'https://www.notion.so/' + id.replace(/-/g, '')
@@ -84,6 +85,7 @@ const Layout = ({
             />
           </div>
         )}
+        <CodeCopyButton />
       </article>
       <div className="flex justify-between font-medium text-gray-500 dark:text-gray-400">
         <a>
