@@ -10,6 +10,7 @@ import Comments from '@/components/Comments'
 import mapImageUrl from '@/lib/mapImageUrl'
 import Link from 'next/link'
 import CodeCopyButton from '@/components/CodeCopyButton'
+import TableOfContents from '@/components/TableOfContents'
 
 const mapPageUrl = id => {
   return 'https://www.notion.so/' + id.replace(/-/g, '')
@@ -70,6 +71,7 @@ const Layout = ({
           </nav>
         )}
         {children}
+        <TableOfContents blockMap={blockMap} />
         {blockMap && (
           <div className="-mt-4">
             <NotionRenderer
