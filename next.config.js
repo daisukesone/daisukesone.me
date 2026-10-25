@@ -1,5 +1,8 @@
 module.exports = {
   webpack5: true,
+  experimental: {
+    cpus: 2
+  },
   images: {
     domains: ['gravatar.com']
   },
