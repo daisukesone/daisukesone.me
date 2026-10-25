@@ -17,7 +17,7 @@ const Pagination = ({ page, showNext }) => {
               ? `${BLOG.path || '/'}`
               : `/page/${currentPage - 1}`
           }
-        >
+         legacyBehavior>
           <a>
             <button rel="prev" className="pill-button">
               ← {locale.PAGINATION.PREV}
@@ -26,7 +26,7 @@ const Pagination = ({ page, showNext }) => {
         </Link>
       )}
       {showNext && (
-        <Link href={`/page/${currentPage + 1}`}>
+        <Link href={`/page/${currentPage + 1}`} legacyBehavior>
           <a>
             <button rel="next" className="pill-button">
               {locale.PAGINATION.NEXT} →

@@ -37,8 +37,8 @@ export async function getStaticProps ({ params: { slug } }) {
   const currentTags = post.tags || []
   const relatedPosts = currentTags.length > 0
     ? posts
-        .filter(p => p.slug !== slug && p.type && p.type[0] !== 'Page' && (p.tags || []).some(t => currentTags.includes(t)))
-        .slice(0, 3)
+      .filter(p => p.slug !== slug && p.type && p.type[0] !== 'Page' && (p.tags || []).some(t => currentTags.includes(t)))
+      .slice(0, 3)
     : []
   const emailHash = createHash('md5')
     .update(BLOG.email)

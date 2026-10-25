@@ -5,7 +5,7 @@ import formatDate from '@/lib/formatDate'
 const BlogPost = ({ post, index = 0 }) => {
   const delay = Math.min(index + 3, 8)
   return (
-    <Link href={`${BLOG.path}/${post.slug}`}>
+    <Link href={`${BLOG.path}/${post.slug}`} legacyBehavior>
       <a className={`post-card group mb-4 md:mb-5 fade-up fade-up-${delay}`}>
         <article key={post.id}>
           <header className="flex items-center justify-between mb-2">

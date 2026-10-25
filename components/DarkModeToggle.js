@@ -29,7 +29,8 @@ const DarkModeToggle = () => {
       onClick={toggle}
       className="ml-4 text-black dark:text-gray-50"
     >
-      {dark ? (
+      {dark
+        ? (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-5 h-5">
           <circle cx="12" cy="12" r="5" strokeWidth="2" />
           <line x1="12" y1="1" x2="12" y2="3" strokeWidth="2" strokeLinecap="round" />
@@ -41,11 +42,12 @@ const DarkModeToggle = () => {
           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" strokeWidth="2" strokeLinecap="round" />
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" strokeWidth="2" strokeLinecap="round" />
         </svg>
-      ) : (
+          )
+        : (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-5 h-5">
           <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-      )}
+          )}
     </button>
   )
 }

@@ -9,7 +9,7 @@ const RelatedPosts = ({ posts }) => {
       <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">Related Posts</h3>
       <div className="space-y-3">
         {posts.map(post => (
-          <Link key={post.id} href={`${BLOG.path}/${post.slug}`}>
+          <Link key={post.id} href={`${BLOG.path}/${post.slug}`} legacyBehavior>
             <a className="block group">
               <p className="text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition">
                 {post.title}

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 const TagItem = ({ tag }) => (
-  <Link href={`/tag/${encodeURIComponent(tag)}`}>
+  <Link href={`/tag/${encodeURIComponent(tag)}`} legacyBehavior>
     <a>
       <p className="tag-pill mr-2">{tag}</p>
     </a>

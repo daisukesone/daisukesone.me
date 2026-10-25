@@ -18,6 +18,8 @@ const ScrollToTop = () => {
   return (
     <button
       aria-label="Scroll to top"
+      aria-hidden={!visible}
+      tabIndex={visible ? 0 : -1}
       onClick={scrollToTop}
       className={`fixed bottom-8 right-8 z-50 rounded-full bg-gray-200 dark:bg-gray-700 shadow-lg p-3 text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'

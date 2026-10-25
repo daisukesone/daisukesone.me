@@ -3,7 +3,7 @@ import BlogPost from '@/components/BlogPost'
 import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   const posts = await getAllPosts({ includePages: false })
   const archiveByYear = {}
   posts.forEach(post => {

@@ -72,7 +72,7 @@ const Hero = () => {
             Email
           </a>
         )}
-        <Link href="/feed">
+        <Link href="/feed" legacyBehavior>
           <a className="social-chip">
             <RssIcon />
             RSS

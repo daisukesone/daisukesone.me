@@ -250,7 +250,16 @@ pre[class*='language-'] {
   transition: opacity 0.2s;
 }
 
-pre:hover .copy-btn {
+.notion-code {
+  position: relative;
+}
+
+.notion-code-copy {
+  display: none;
+}
+
+pre:hover .copy-btn,
+.copy-btn:focus-visible {
   opacity: 1;
 }
 

@@ -33,7 +33,7 @@ const Photos = ({ photos }) => {
       )}
       <div className="photo-grid fade-up fade-up-3">
         {photos.map(photo => (
-          <Link href={`${BLOG.path}/${photo.slug}`} key={photo.id}>
+          <Link href={`${BLOG.path}/${photo.slug}`} key={photo.id} legacyBehavior>
             <a className="photo-card">
               <img
                 src={photo.cover}

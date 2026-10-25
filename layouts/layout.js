@@ -117,7 +117,7 @@ const Layout = ({
           )}
         </div>
         <CodeCopyButton />
-        <ShareButtons title={frontMatter.title} url={`${BLOG.link.replace(/\/$/, '')}/${frontMatter.slug}`} />
+        <ShareButtons title={frontMatter.title} url={new URL(frontMatter.slug, BLOG.link).href} />
       </article>
       <div className="flex justify-between mt-8">
         <button
@@ -137,7 +137,7 @@ const Layout = ({
         <div className="flex justify-between mt-6 text-gray-500 dark:text-gray-400">
           <div className="text-left max-w-[45%]">
             {prevPost && (
-              <Link href={`${BLOG.path}/${prevPost.slug}`}>
+              <Link href={`${BLOG.path}/${prevPost.slug}`} legacyBehavior>
                 <a className="hover:text-black dark:hover:text-gray-100 transition-colors">
                   <span className="text-sm">← Previous</span>
                   <p className="font-medium mt-1 truncate">{prevPost.title}</p>
@@ -147,7 +147,7 @@ const Layout = ({
           </div>
           <div className="text-right max-w-[45%]">
             {nextPost && (
-              <Link href={`${BLOG.path}/${nextPost.slug}`}>
+              <Link href={`${BLOG.path}/${nextPost.slug}`} legacyBehavior>
                 <a className="hover:text-black dark:hover:text-gray-100 transition-colors">
                   <span className="text-sm">Next →</span>
                   <p className="font-medium mt-1 truncate">{nextPost.title}</p>

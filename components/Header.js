@@ -25,7 +25,7 @@ const NavBar = () => {
                 key={link.id}
                 className="block ml-4 text-sm font-medium text-gray-600 dark:text-gray-300 nav"
               >
-                <Link href={link.to}>
+                <Link href={link.to} legacyBehavior>
                   <a className="nav-link">{link.name}</a>
                 </Link>
               </li>
@@ -72,7 +72,7 @@ const Header = ({ navBarTitle, fullWidth }) => {
         ref={navRef}
       >
         <div className="flex items-center">
-          <Link href="/">
+          <Link href="/" legacyBehavior>
             <a aria-label={BLOG.title} className="avatar-ring">
               <Image
                 src="/top.png"

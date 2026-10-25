@@ -680,3 +680,7 @@ nav {
 .page-visible {
   opacity: 1;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition { transition: none; }
+}

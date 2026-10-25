@@ -12,7 +12,7 @@ const Tags = ({ tags, currentTag }) => {
               <Link
                 key={key}
                 href={selected ? '/search' : `/tag/${encodeURIComponent(key)}`}
-              >
+               legacyBehavior>
                 <a
                   className={`tag-pill block ${
                     selected ? 'tag-pill-active' : ''

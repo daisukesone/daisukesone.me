@@ -99,33 +99,11 @@ class MyDocument extends Document {
             <meta name="theme-color" content={BLOG.appearance === 'dark' ? BLOG.darkBackground : BLOG.lightBackground} />
               )
           }
-          {BLOG.appearance === 'auto' && (
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  (function() {
-                    var saved = localStorage.getItem('darkMode');
-                    var isDark;
-                    if (saved !== null) {
-                      isDark = saved === 'true';
-                    } else {
-                      isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    }
-                    if (isDark) {
-                      document.documentElement.classList.add('dark');
-                    }
-                  })();
-                `
-              }}
-            />
-          )}
         </Head>
         <body className="bg-day dark:bg-night">
           <script
             dangerouslySetInnerHTML={{
-              __html: `(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':${JSON.stringify(
-                BLOG.appearance === 'dark'
-              )};if(d){document.documentElement.classList.add('dark')}else{document.documentElement.classList.remove('dark')}}catch(e){}})()`
+              __html: `(function(){try{var s=localStorage.getItem('theme');var old=localStorage.getItem('darkMode');var d=s?s==='dark':old!==null?old==='true':${BLOG.appearance === 'auto' ? "window.matchMedia('(prefers-color-scheme: dark)').matches" : JSON.stringify(BLOG.appearance === 'dark')};document.documentElement.classList.toggle('dark',d)}catch(e){}})()`
             }}
           />
           <Main />
