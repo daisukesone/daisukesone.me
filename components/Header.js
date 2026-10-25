@@ -16,14 +16,14 @@ const NavBar = () => {
     { id: 5, name: 'アーカイブ', to: '/archive', show: BLOG.showArchive }
   ]
   return (
-    <div className="flex-shrink-0 flex items-center">
-      <ul className="flex flex-row items-center">
+    <div className="flex min-w-0 flex-1 items-center justify-end">
+      <ul className="flex min-w-0 flex-row items-center overflow-x-auto whitespace-nowrap">
         {links.map(
           (link) =>
             link.show && (
               <li
                 key={link.id}
-                className="block ml-4 text-sm font-medium text-gray-600 dark:text-gray-300 nav"
+                className="block ml-4 flex-shrink-0 text-sm font-medium text-gray-600 dark:text-gray-300 nav"
               >
                 <Link href={link.to} legacyBehavior>
                   <a className="nav-link">{link.name}</a>

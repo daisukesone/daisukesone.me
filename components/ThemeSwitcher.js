@@ -59,7 +59,7 @@ const ThemeSwitcher = () => {
   return (
     <button
       onClick={toggle}
-      className="theme-toggle ml-4"
+      className="theme-toggle ml-4 flex-shrink-0"
       aria-label="Toggle dark mode"
       title="Toggle dark mode"
     >
