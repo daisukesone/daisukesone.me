@@ -3,32 +3,36 @@ import Link from 'next/link'
 import Image from 'next/image'
 import BLOG from '@/blog.config'
 import { useLocale } from '@/lib/locale'
-import DarkModeToggle from '@/components/DarkModeToggle'
+import ThemeSwitcher from '@/components/ThemeSwitcher'
 
 const NavBar = () => {
   const locale = useLocale()
   const links = [
     { id: 0, name: locale.NAV.INDEX, to: BLOG.path || '/', show: true },
-    { id: 1, name: locale.NAV.ABOUT, to: '/about', show: BLOG.showAbout },
-    { id: 2, name: locale.NAV.RSS, to: '/feed', show: true },
-    { id: 3, name: locale.NAV.SEARCH, to: '/search', show: true },
-    { id: 4, name: 'Archive', to: '/archive', show: BLOG.showArchive }
+    { id: 1, name: locale.NAV.PHOTOS, to: '/photos', show: BLOG.showPhotos },
+    { id: 2, name: locale.NAV.ABOUT, to: '/about', show: BLOG.showAbout },
+    { id: 3, name: locale.NAV.RSS, to: '/feed', show: true },
+    { id: 4, name: locale.NAV.SEARCH, to: '/search', show: true },
+    { id: 5, name: 'アーカイブ', to: '/archive', show: BLOG.showArchive }
   ]
   return (
-    <div className='flex-shrink-0'>
-      <ul className='flex flex-row'>
+    <div className="flex-shrink-0 flex items-center">
+      <ul className="flex flex-row items-center">
         {links.map(
           (link) =>
             link.show && (
               <li
                 key={link.id}
-                className='block ml-4 text-black dark:text-gray-50 nav'
+                className="block ml-4 text-sm font-medium text-gray-600 dark:text-gray-300 nav"
               >
-                <Link href={link.to}>{link.name}</Link>
+                <Link href={link.to}>
+                  <a className="nav-link">{link.name}</a>
+                </Link>
               </li>
             )
         )}
       </ul>
+      <ThemeSwitcher />
     </div>
   )
 }
@@ -59,42 +63,38 @@ const Header = ({ navBarTitle, fullWidth }) => {
   }, [sentinalRef])
   return (
     <>
-      <div className='observer-element h-4 md:h-12' ref={sentinalRef}></div>
+      <div className="observer-element h-4 md:h-12" ref={sentinalRef}></div>
       <div
-        className={`sticky-nav m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-opacity-60 ${
+        className={`sticky-nav m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 ${
           !fullWidth ? 'max-w-3xl px-4' : 'px-4 md:px-24'
         }`}
-        id='sticky-nav'
+        id="sticky-nav"
         ref={navRef}
       >
-        <div className='flex items-center'>
-          <Link href='/' aria-label={BLOG.title}>
-            <div className='h-6'>
+        <div className="flex items-center">
+          <Link href="/">
+            <a aria-label={BLOG.title} className="avatar-ring">
               <Image
-                src='/top.png'
-                width={24}
-                height={24}
-                alt='daisukesone'
+                src="/top.png"
+                width={26}
+                height={26}
+                alt="daisukesone"
               />
-            </div>
+            </a>
           </Link>
           {navBarTitle
             ? (
-            <p className="ml-2 font-medium text-day dark:text-night header-name">
+            <p className="ml-3 font-semibold text-gray-800 dark:text-gray-100 header-name">
               {navBarTitle}
             </p>
               )
             : (
-            <p className="ml-2 font-medium text-day dark:text-night header-name">
-              {BLOG.title},{' '}
-              <span className="font-normal">{BLOG.description}</span>
+            <p className="ml-3 font-semibold text-gray-800 dark:text-gray-100 header-name">
+              {BLOG.title}
             </p>
               )}
         </div>
-        <div className='flex items-center'>
-          <NavBar />
-          <DarkModeToggle />
-        </div>
+        <NavBar />
       </div>
     </>
   )
