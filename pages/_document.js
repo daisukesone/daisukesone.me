@@ -99,6 +99,26 @@ class MyDocument extends Document {
             <meta name="theme-color" content={BLOG.appearance === 'dark' ? BLOG.darkBackground : BLOG.lightBackground} />
               )
           }
+          {BLOG.appearance === 'auto' && (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  (function() {
+                    var saved = localStorage.getItem('darkMode');
+                    var isDark;
+                    if (saved !== null) {
+                      isDark = saved === 'true';
+                    } else {
+                      isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    }
+                    if (isDark) {
+                      document.documentElement.classList.add('dark');
+                    }
+                  })();
+                `
+              }}
+            />
+          )}
         </Head>
         <body className="bg-day dark:bg-night">
           <Main />
