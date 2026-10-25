@@ -27,3 +27,18 @@ test('photo list includes all pages, filters non-images and sorts newest first',
 test('storage failure is not turned into a successful empty gallery', async () => {
   await assert.rejects(loadGallery(async () => { throw new Error('storage unavailable') }), /storage unavailable/)
 })
+
+test('imported photos keep their original dates and mix correctly with new uploads', () => {
+  const photos = toGalleryPhotos([
+    { pathname: 'photos/tumblr/old-01.jpg', uploadedAt: '2026-10-26' },
+    { pathname: 'photos/new-photo.jpg', uploadedAt: '2026-10-25' },
+    { pathname: 'photos/tumblr/newer-01.jpg', uploadedAt: '2026-10-26' }
+  ], {
+    'photos/tumblr/old-01.jpg': { date: '2017-11-30T15:00:00Z', title: '' },
+    'photos/tumblr/newer-01.jpg': { date: '2025-08-30T08:22:54Z', title: '' }
+  })
+  assert.deepEqual(photos.map(p => p.id), ['photos/new-photo.jpg', 'photos/tumblr/newer-01.jpg', 'photos/tumblr/old-01.jpg'])
+  assert.equal(photos[2].date, '2017-11-30T15:00:00.000Z')
+  assert.equal(photos[2].title, 'Tumblrからの写真')
+  assert.equal(photos[0].title, 'new photo')
+})
