@@ -188,6 +188,7 @@ nav {
 }
 
 .nav-link {
+  display: inline-block;
   position: relative;
   padding: 0.15rem 0;
   transition: color 0.25s ease;
@@ -197,7 +198,7 @@ nav {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -2px;
+  bottom: 0;
   height: 2px;
   width: 100%;
   border-radius: 2px;
