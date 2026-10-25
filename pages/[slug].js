@@ -1,9 +1,10 @@
 import Layout from '@/layouts/layout'
 import { getAllPosts, getPostBlocks } from '@/lib/notion'
 import BLOG from '@/blog.config'
+import { getReadingTime } from '@/lib/readingTime'
 import { createHash } from 'crypto'
 
-const BlogPost = ({ post, blockMap, emailHash, prevPost, nextPost }) => {
+const BlogPost = ({ post, blockMap, emailHash, prevPost, nextPost, readingTime }) => {
   if (!post) return null
   return (
     <Layout
@@ -13,6 +14,7 @@ const BlogPost = ({ post, blockMap, emailHash, prevPost, nextPost }) => {
       fullWidth={post.fullWidth}
       prevPost={prevPost}
       nextPost={nextPost}
+      readingTime={readingTime}
     />
   )
 }
@@ -29,6 +31,7 @@ export async function getStaticProps ({ params: { slug } }) {
   const posts = await getAllPosts({ includePages: true })
   const post = posts.find(t => t.slug === slug)
   const blockMap = await getPostBlocks(post.id)
+  const readingTime = getReadingTime(blockMap)
   const emailHash = createHash('md5')
     .update(BLOG.email)
     .digest('hex')
@@ -40,7 +43,7 @@ export async function getStaticProps ({ params: { slug } }) {
   const nextPost = postIndex < posts.length - 1 ? { title: posts[postIndex + 1].title, slug: posts[postIndex + 1].slug } : null
 
   return {
-    props: { post, blockMap, emailHash, prevPost, nextPost },
+    props: { post, blockMap, emailHash, prevPost, nextPost, readingTime },
     revalidate: 1
   }
 }

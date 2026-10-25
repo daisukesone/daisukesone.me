@@ -23,7 +23,8 @@ const Layout = ({
   emailHash,
   fullWidth = false,
   prevPost,
-  nextPost
+  nextPost,
+  readingTime
 }) => {
   const locale = useLocale()
   const router = useRouter()
@@ -61,6 +62,11 @@ const Layout = ({
                 BLOG.lang
               )}
             </div>
+            {readingTime && (
+              <div className="mr-2 mb-4">
+                {readingTime} min read
+              </div>
+            )}
             {frontMatter.tags && (
               <div className="flex flex-nowrap max-w-full overflow-x-auto article-tags">
                 {frontMatter.tags.map(tag => (
