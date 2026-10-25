@@ -4,7 +4,7 @@ import BLOG from '@/blog.config'
 import { getReadingTime } from '@/lib/readingTime'
 import { createHash } from 'crypto'
 
-const BlogPost = ({ post, blockMap, emailHash, prevPost, nextPost, readingTime }) => {
+const BlogPost = ({ post, blockMap, emailHash, prevPost, nextPost, readingTime, relatedPosts }) => {
   if (!post) return null
   return (
     <Layout
@@ -15,6 +15,7 @@ const BlogPost = ({ post, blockMap, emailHash, prevPost, nextPost, readingTime }
       prevPost={prevPost}
       nextPost={nextPost}
       readingTime={readingTime}
+      relatedPosts={relatedPosts}
     />
   )
 }
@@ -32,6 +33,12 @@ export async function getStaticProps ({ params: { slug } }) {
   const post = posts.find(t => t.slug === slug)
   const blockMap = await getPostBlocks(post.id)
   const readingTime = getReadingTime(blockMap)
+  const currentTags = post.tags || []
+  const relatedPosts = currentTags.length > 0
+    ? posts
+        .filter(p => p.slug !== slug && p.type && p.type[0] !== 'Page' && (p.tags || []).some(t => currentTags.includes(t)))
+        .slice(0, 3)
+    : []
   const emailHash = createHash('md5')
     .update(BLOG.email)
     .digest('hex')
@@ -43,7 +50,7 @@ export async function getStaticProps ({ params: { slug } }) {
   const nextPost = postIndex < posts.length - 1 ? { title: posts[postIndex + 1].title, slug: posts[postIndex + 1].slug } : null
 
   return {
-    props: { post, blockMap, emailHash, prevPost, nextPost, readingTime },
+    props: { post, blockMap, emailHash, prevPost, nextPost, readingTime, relatedPosts },
     revalidate: 1
   }
 }

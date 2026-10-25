@@ -11,6 +11,7 @@ import mapImageUrl from '@/lib/mapImageUrl'
 import Link from 'next/link'
 import CodeCopyButton from '@/components/CodeCopyButton'
 import TableOfContents from '@/components/TableOfContents'
+import RelatedPosts from '@/components/RelatedPosts'
 
 const mapPageUrl = id => {
   return 'https://www.notion.so/' + id.replace(/-/g, '')
@@ -24,7 +25,8 @@ const Layout = ({
   fullWidth = false,
   prevPost,
   nextPost,
-  readingTime
+  readingTime,
+  relatedPosts
 }) => {
   const locale = useLocale()
   const router = useRouter()
@@ -137,6 +139,7 @@ const Layout = ({
           </div>
         </div>
       )}
+      <RelatedPosts posts={relatedPosts} />
       <Comments frontMatter={frontMatter} />
     </Container>
   )
