@@ -10,7 +10,6 @@ import Scripts from '@/components/Scripts'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-const Ackee = dynamic(() => import('@/components/Ackee'), { ssr: false })
 const Gtag = dynamic(() => import('@/components/Gtag'), { ssr: false })
 
 function MyApp ({ Component, pageProps }) {
@@ -35,12 +34,6 @@ function MyApp ({ Component, pageProps }) {
       <Scripts />
       <LocaleProvider>
         <>
-          {BLOG.isProd && BLOG?.analytics?.provider === 'ackee' && (
-            <Ackee
-              ackeeServerUrl={BLOG.analytics.ackeeConfig.dataAckeeServer}
-              ackeeDomainId={BLOG.analytics.ackeeConfig.domainId}
-            />
-          )}
           {BLOG.isProd && BLOG?.analytics?.provider === 'ga' && <Gtag />}
           <div className={`page-transition ${fadeIn ? 'page-visible' : 'page-hidden'}`}>
             <Component {...pageProps} />

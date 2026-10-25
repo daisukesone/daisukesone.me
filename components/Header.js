@@ -24,9 +24,7 @@ const NavBar = () => {
                 key={link.id}
                 className='block ml-4 text-black dark:text-gray-50 nav'
               >
-                <Link href={link.to}>
-                  <a>{link.name}</a>
-                </Link>
+                <Link href={link.to}>{link.name}</Link>
               </li>
             )
         )}
@@ -70,17 +68,15 @@ const Header = ({ navBarTitle, fullWidth }) => {
         ref={navRef}
       >
         <div className='flex items-center'>
-          <Link href='/'>
-            <a aria-label={BLOG.title}>
-              <div className='h-6'>
-                <Image
-                  src='/top.png'
-                  width={24}
-                  height={24}
-                  alt='daisukesone'
-                />
-              </div>
-            </a>
+          <Link href='/' aria-label={BLOG.title}>
+            <div className='h-6'>
+              <Image
+                src='/top.png'
+                width={24}
+                height={24}
+                alt='daisukesone'
+              />
+            </div>
           </Link>
           {navBarTitle
             ? (
