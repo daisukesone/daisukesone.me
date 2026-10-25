@@ -139,3 +139,15 @@ nav {
     @apply bg-day bg-opacity-90 dark:bg-night dark:bg-opacity-90;
   }
 }
+
+.page-transition {
+  transition: opacity 0.3s ease;
+}
+
+.page-hidden {
+  opacity: 0;
+}
+
+.page-visible {
+  opacity: 1;
+}
